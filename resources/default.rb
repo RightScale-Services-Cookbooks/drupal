@@ -1,10 +1,10 @@
 #clears the drupal cache
 actions :clear_cache
-  attribute :directory, :kind_of => String, :default => nil
+  attribute :directory, :kind_of => String, :default => node[:drupal][:base_dir]
 
 actions :generate_settings
   #generic
-  attribute :settings_file, :kind_of => String, :default => "/home/webapps/myapp/sites/default/settings/settings.php"
+  attribute :settings_file, :kind_of => String, :default => node[:drupal][:settings][:file]
 
   #database attributes
   attribute :database_driver, :kind_of => String, :default => "mysql"
