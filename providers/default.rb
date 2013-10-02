@@ -4,6 +4,14 @@ action :clear_cache do
 end
 
 action :generate_settings do
+  settings_file=@new_resource.settings_file
+  directory "#{::File.dirname(settings_file)}/local_settings/" do
+    owner "root"
+    group "root"
+    mode "0644"
+    action :create
+  end
+  
   template "#{@new_resource.settings_file}" do
     cookbook "drupal"
     source "settings.php.erb"

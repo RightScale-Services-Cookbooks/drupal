@@ -420,3 +420,9 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['pressflow_smart_start'] = TRUE;
 
+foreach (new DirectoryIterator(conf_path().'/local_settings/) AS $file) {
+  if($file->isDot()) continue;
+  if (is_file('./'. conf_path() . '/local_settngs/' . $file )) {
+    include_once './'. conf_path() .'/local_settings/' . $file;
+  }
+}
