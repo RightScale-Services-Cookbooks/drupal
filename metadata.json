@@ -1,118 +1,57 @@
 {
-  "providing": {
-  },
+  "name": "drupal",
   "description": "Installs/Configures drupal",
-  "conflicting": {
-  },
   "long_description": "drupal Cookbook\n===============\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - drupal needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### drupal::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['drupal']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### drupal::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `drupal` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[drupal]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n",
+  "maintainer": "RightScale Inc",
+  "maintainer_email": "premium@rightscale.com",
+  "license": "Apache 2.0",
   "platforms": {
   },
-  "license": "Apache 2.0",
-  "maintainer_email": "premium@rightscale.com",
-  "recipes": {
-    "drupal::setup_file_conveyor": "installs fileconveyor",
-    "drupal::default": "sets up drupal",
-    "drupal::do_config_settings-php": "config settings php",
-    "drupal::clear_cache": "clears drupal cache",
-    "drupal::setup_cron_jobs": "sets up drupal cron jobs"
-  },
   "dependencies": {
-    "app": ">= 0.0.0",
-    "repo": ">= 0.0.0",
     "rightscale": ">= 0.0.0",
+    "repo": ">= 0.0.0",
+    "app": ">= 0.0.0",
     "app_php": ">= 0.0.0"
-  },
-  "replacing": {
   },
   "recommendations": {
   },
-  "maintainer": "RightScale Inc",
-  "name": "drupal",
-  "version": "0.1.6",
-  "groupings": {
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
   },
   "attributes": {
-    "drupal/fileconveyor/api_key": {
-      "description": "FileConveyor API Key",
+    "drupal/fileconveyor/username": {
+      "display_name": "FileConveyor Username",
+      "description": "FileConveyor Username",
       "required": "required",
-      "choice": [
-
-      ],
       "recipes": [
         "drupal::setup_file_conveyor"
       ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
+    },
+    "drupal/fileconveyor/api_key": {
       "display_name": "FileConveyor API Key",
-      "calculated": false,
-      "type": "string"
-    },
-    "drupal/database/user": {
-      "description": "Drupal Database User",
+      "description": "FileConveyor API Key",
       "required": "required",
+      "recipes": [
+        "drupal::setup_file_conveyor"
+      ],
       "choice": [
 
       ],
-      "recipes": [
-        "drupal::do_config_settings-php"
-      ],
-      "display_name": "Drupal Database User",
-      "calculated": false,
-      "type": "string"
-    },
-    "drupal/database/schema": {
-      "description": "Drupal Database Schema",
-      "required": "required",
-      "choice": [
-
-      ],
-      "recipes": [
-        "drupal::do_config_settings-php"
-      ],
-      "display_name": "Drupal Database Schema",
-      "calculated": false,
-      "type": "string"
-    },
-    "drupal/database/port": {
-      "description": "Drupal Database Port",
-      "required": "optional",
-      "choice": [
-        "3306",
-        "5432"
-      ],
-      "default": "3306",
-      "recipes": [
-        "drupal::do_config_settings-php"
-      ],
-      "display_name": "Drupal Database Port",
-      "calculated": false,
-      "type": "string"
-    },
-    "drupal/database/password": {
-      "description": "Drupal Database Password",
-      "required": "required",
-      "choice": [
-
-      ],
-      "recipes": [
-        "drupal::do_config_settings-php"
-      ],
-      "display_name": "Drupal Database Password",
-      "calculated": false,
-      "type": "string"
-    },
-    "drupal/database/table_prefix": {
-      "description": "Drupal Database Table Prefix",
-      "required": "required",
-      "choice": [
-
-      ],
-      "recipes": [
-        "drupal::do_config_settings-php"
-      ],
-      "display_name": "Drupal Database Table Prefix",
       "calculated": false,
       "type": "string"
     },
     "drupal/database/driver": {
+      "display_name": "Drupal Database Driver",
       "description": "Drupal Database Driver",
       "required": "optional",
       "choice": [
@@ -123,37 +62,98 @@
       "recipes": [
         "drupal::do_config_settings-php"
       ],
-      "display_name": "Drupal Database Driver",
       "calculated": false,
       "type": "string"
     },
-    "drupal/fileconveyor/username": {
-      "description": "FileConveyor Username",
+    "drupal/database/schema": {
+      "display_name": "Drupal Database Schema",
+      "description": "Drupal Database Schema",
       "required": "required",
+      "recipes": [
+        "drupal::do_config_settings-php"
+      ],
       "choice": [
 
       ],
+      "calculated": false,
+      "type": "string"
+    },
+    "drupal/database/user": {
+      "display_name": "Drupal Database User",
+      "description": "Drupal Database User",
+      "required": "required",
       "recipes": [
-        "drupal::setup_file_conveyor"
+        "drupal::do_config_settings-php"
       ],
-      "display_name": "FileConveyor Username",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
+    },
+    "drupal/database/password": {
+      "display_name": "Drupal Database Password",
+      "description": "Drupal Database Password",
+      "required": "required",
+      "recipes": [
+        "drupal::do_config_settings-php"
+      ],
+      "choice": [
+
+      ],
       "calculated": false,
       "type": "string"
     },
     "drupal/database/host": {
+      "display_name": "Drupal Database Host",
       "description": "Drupal Database Host",
       "required": "required",
+      "recipes": [
+        "drupal::do_config_settings-php"
+      ],
       "choice": [
 
+      ],
+      "calculated": false,
+      "type": "string"
+    },
+    "drupal/database/port": {
+      "display_name": "Drupal Database Port",
+      "description": "Drupal Database Port",
+      "required": "optional",
+      "default": "3306",
+      "choice": [
+        "3306",
+        "5432"
       ],
       "recipes": [
         "drupal::do_config_settings-php"
       ],
-      "display_name": "Drupal Database Host",
+      "calculated": false,
+      "type": "string"
+    },
+    "drupal/database/table_prefix": {
+      "display_name": "Drupal Database Table Prefix",
+      "description": "Drupal Database Table Prefix",
+      "required": "required",
+      "recipes": [
+        "drupal::do_config_settings-php"
+      ],
+      "choice": [
+
+      ],
       "calculated": false,
       "type": "string"
     }
   },
-  "suggestions": {
-  }
+  "groupings": {
+  },
+  "recipes": {
+    "drupal::default": "sets up drupal",
+    "drupal::setup_cron_jobs": "sets up drupal cron jobs",
+    "drupal::clear_cache": "clears drupal cache",
+    "drupal::setup_file_conveyor": "installs fileconveyor",
+    "drupal::do_config_settings-php": "config settings php"
+  },
+  "version": "0.1.7"
 }
