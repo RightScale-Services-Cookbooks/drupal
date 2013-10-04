@@ -22,3 +22,5 @@ actions :create_drush_alias
 
 actions :download_module, :enable_module
   attribute :module_name, :kind_of => String, :name_attriute => true
+
+actions :install
