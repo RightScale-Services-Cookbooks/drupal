@@ -1,6 +1,71 @@
+action :install do
+  install_directory=@new_resource.directory
+
+  remote_file "/tmp/drupal.tar.gz" do
+    source "http://ftp.drupal.org/files/projects/drupal-7.23.tar.gz"
+    owner "root"
+    group "root"
+    mode "0644"
+    checksum "79f2ae06aac349b86fc0f6cd100f3fc34b72e9f46068ddf704d575778aae1f99"
+    action :create
+  end
+  
+  execute "tar -xvzf /tmp/drupal.tar.gz -C #{install_directory}"
+
+end
+
+action :create_drush_alias do
+  directory "/etc/drush" do
+    owner "root"
+    group "root"
+    mode "0644"
+    action :create
+    not_if "test -e /etc/drush"
+  end
+
+  Chef::Log.info "Adding Alias for domain name(#{@new_resource.domain_name}) with path(#{@new_resource.path})"
+  domain_name = @new_resource.domain_name
+  path = @new_resource.path
+
+  template "/etc/drush/#{@new_resource.domain_name}.aliases.drushrc.php" do
+    cookbook "drupal"
+    source "aliases.drushrc.php.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+    backup false
+    variables( :domain_name => domain_name,
+               :path => path )
+    action :create
+  end
+end
+
+action :download_module do
+  site_alias=@new_resource.site_alias
+  module_name=@new_resouce.module_name
+  execute "drush #{site_alias} dl #{module_name}"
+end
+
+action :install_module do
+  site_alias=@new_resource.site_alias
+  module_name=@new_resouce.module_name
+  execute "drush #{site_alias} -y en #{module_name}"
+end
 
 action :clear_cache do
-  execute "cd #{new_resource.directory}; drush cc all"
+  site_alias=@new_resource.site_alias
+  if !site_alias.nil?
+    if site_alias[0] != '@'
+      site_alias = '@'+site_alias
+    end
+    Chef::Log.info "Clearing cache for alias #{site_alias}"
+  end
+
+  directory=@new_resource.directory
+  if !directory.nil?
+    dir_string="cd #{directory};"
+  end
+  execute "#{dir_string} drush #{site_alias} cc all"
 end
 
 action :generate_settings do
