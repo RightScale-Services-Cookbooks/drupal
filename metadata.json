@@ -170,5 +170,5 @@
     "drupal::setup-proxies": "configures proxies",
     "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies"
   },
-  "version": "0.1.7"
+  "version": "0.1.8"
 }
