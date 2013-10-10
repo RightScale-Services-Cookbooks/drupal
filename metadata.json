@@ -10,6 +10,7 @@
   "dependencies": {
     "rightscale": ">= 0.0.0",
     "repo": ">= 0.0.0",
+    "web_apache": ">= 0.0.0",
     "app": ">= 0.0.0",
     "app_php": ">= 0.0.0"
   },
@@ -157,6 +158,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "drupal/memcache_servers": {
+      "display_name": "Memcache Servers",
+      "description": "Memcache Servers",
+      "required": "required",
+      "recipes": [
+        "drupal::memcache"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {
@@ -169,7 +183,8 @@
     "drupal::setup_file_conveyor": "installs fileconveyor",
     "drupal::do_config_settings-php": "config settings php",
     "drupal::setup-proxies": "configures proxies",
-    "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies"
+    "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies",
+    "drupal::memcache": "configures memcache"
   },
-  "version": "0.1.9"
+  "version": "0.1.10"
 }

@@ -4,10 +4,11 @@ maintainer_email 'premium@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures drupal'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.9'
+version          '0.1.10'
 
 depends "rightscale"
 depends "repo"
+depends "web_apache"
 depends "app"
 depends "app_php"
 
@@ -19,6 +20,7 @@ recipe "drupal::setup_file_conveyor", "installs fileconveyor"
 recipe "drupal::do_config_settings-php", "config settings php"
 recipe "drupal::setup-proxies", "configures proxies"
 recipe "drupal::rightscale-setup-proxies", "uses rightscale tag system to setup proxies"
+recipe "drupal::memcache", "configures memcache"
 
 
 attribute "drupal/fileconveyor/username",
@@ -84,3 +86,9 @@ attribute "drupal/proxy/pool_name",
   :description => "Drupal LB Pool Name",
   :required => "required",
   :recipes => [ "drupal::rightscale-setup-proxies" ]
+
+attribute "drupal/memcache_servers",
+  :display_name => "Memcache Servers",
+  :description => "Memcache Servers",
+  :required => "required",
+  :recipes => [ "drupal::memcache" ]
