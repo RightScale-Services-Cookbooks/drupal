@@ -94,3 +94,28 @@ action :generate_settings do
   end
 end
 
+action :setup_proxies do
+    settings_directory=@new_resource.settings_directory
+    lb_ip=@new_resource.lb_ip
+
+    directory "#{settings_directory}" do
+      owner "apache"
+      group "apache"
+      mode "0644"
+      action :create
+      not_if "test -d #{settings_directory}"
+    end
+
+    Chef::Log.info "ips: #{lb_ip}"
+    template "#{settings_directory}/proxies.php" do
+      cookbook "drupal"
+      source "proxies.php.erb"
+      owner "apache"
+      group "apache"
+      mode "0644"
+      backup false
+      variables( :lb_ip => lb_ip )
+      action :create
+      only_if { lb_ip }
+    end
+end

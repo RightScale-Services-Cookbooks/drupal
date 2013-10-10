@@ -144,6 +144,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "drupal/proxy/pool_name": {
+      "display_name": "Drupal LB Pool Name",
+      "description": "Drupal LB Pool Name",
+      "required": "required",
+      "recipes": [
+        "drupal::rightscale-setup-proxies"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {
@@ -153,7 +166,9 @@
     "drupal::setup_cron_jobs": "sets up drupal cron jobs",
     "drupal::clear_cache": "clears drupal cache",
     "drupal::setup_file_conveyor": "installs fileconveyor",
-    "drupal::do_config_settings-php": "config settings php"
+    "drupal::do_config_settings-php": "config settings php",
+    "drupal::setup-proxies": "configures proxies",
+    "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies"
   },
   "version": "0.1.7"
 }

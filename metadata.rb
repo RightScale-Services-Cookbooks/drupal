@@ -16,6 +16,9 @@ recipe "drupal::setup_cron_jobs", "sets up drupal cron jobs"
 recipe "drupal::clear_cache", "clears drupal cache"
 recipe "drupal::setup_file_conveyor", "installs fileconveyor"
 recipe "drupal::do_config_settings-php", "config settings php"
+recipe "drupal::setup-proxies", "configures proxies"
+recipe "drupal::rightscale-setup-proxies", "uses rightscale tag system to setup proxies"
+
 
 attribute "drupal/fileconveyor/username",
   :display_name => "FileConveyor Username", 
@@ -74,3 +77,9 @@ attribute "drupal/database/table_prefix",
   :description => "Drupal Database Table Prefix",
   :required => "required",
   :recipes => [ "drupal::do_config_settings-php" ]
+
+attribute "drupal/proxy/pool_name",
+  :display_name => "Drupal LB Pool Name", 
+  :description => "Drupal LB Pool Name",
+  :required => "required",
+  :recipes => [ "drupal::rightscale-setup-proxies" ]

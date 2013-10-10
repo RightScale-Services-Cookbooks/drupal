@@ -1,0 +1,8 @@
+<?php
+$conf['reverse_proxy'] = TRUE;
+$conf['reverse_proxy_addresses'] = array();
+<% @lb_ip.each do |ip| %>
+array_push($conf['reverse_proxy_addresses'],'<%= ip %>');
+<% end %>
+?>
+

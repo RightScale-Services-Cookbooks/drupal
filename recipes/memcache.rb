@@ -1,6 +1,6 @@
 rightscale_marker :begin
 
-template "#{conf_dir}/local_settings/memcache.php" do
+template "#{node[:drupal][:settings][:multi_conf_dir]}/memcache.php" do
   cookbook "drupal"
   source "memcache.php.erb"
   owner "apache"

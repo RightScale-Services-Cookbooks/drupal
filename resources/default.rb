@@ -24,3 +24,6 @@ actions :download_module, :enable_module
   attribute :module_name, :kind_of => String, :name_attriute => true
 
 actions :install
+
+actions :setup_proxies
+  attribute :lb_ips, :kind_of => Array
