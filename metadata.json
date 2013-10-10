@@ -163,6 +163,7 @@
   },
   "recipes": {
     "drupal::default": "sets up drupal",
+    "drupal::install": "installs base drupal",
     "drupal::setup_cron_jobs": "sets up drupal cron jobs",
     "drupal::clear_cache": "clears drupal cache",
     "drupal::setup_file_conveyor": "installs fileconveyor",
@@ -170,5 +171,5 @@
     "drupal::setup-proxies": "configures proxies",
     "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies"
   },
-  "version": "0.1.8"
+  "version": "0.1.9"
 }

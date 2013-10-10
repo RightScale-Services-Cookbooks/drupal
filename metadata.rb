@@ -4,7 +4,7 @@ maintainer_email 'premium@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures drupal'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.8'
+version          '0.1.9'
 
 depends "rightscale"
 depends "repo"
@@ -12,6 +12,7 @@ depends "app"
 depends "app_php"
 
 recipe "drupal::default", "sets up drupal"
+recipe "drupal::install", "installs base drupal"
 recipe "drupal::setup_cron_jobs", "sets up drupal cron jobs"
 recipe "drupal::clear_cache", "clears drupal cache"
 recipe "drupal::setup_file_conveyor", "installs fileconveyor"
