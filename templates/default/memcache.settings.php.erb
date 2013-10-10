@@ -1,0 +1,10 @@
+<?php
+$conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+$conf['cache_default_class'] = 'MemCacheDrupal';
+$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+$conf['memcache_key_prefix'] = '<%= @memcache_key_prefix %>';
+$conf['memcache_servers'] = array('<%= @memcache_server %>:<%= @memcache_port %>' => 'default');
+
+<% @memcache_servers.each do |mcs| %>
+$conf['memcache_servers']['<%= mcs %>'] = 'default';
+<%= @end %>
