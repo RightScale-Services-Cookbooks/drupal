@@ -21,7 +21,7 @@ recipe "drupal::do_config_settings-php", "config settings php"
 recipe "drupal::setup-proxies", "configures proxies"
 recipe "drupal::rightscale-setup-proxies", "uses rightscale tag system to setup proxies"
 recipe "drupal::memcache", "configures memcache"
-
+recipe "drupal::clear_cache_by_alias", "clears cache by alias"
 
 attribute "drupal/fileconveyor/username",
   :display_name => "FileConveyor Username", 
@@ -92,3 +92,9 @@ attribute "drupal/memcache_servers",
   :description => "Memcache Servers",
   :required => "required",
   :recipes => [ "drupal::memcache" ]
+
+attribute "drupal/site_alias",
+  :display_name => "Drupal Site Alias",
+  :description => "Drupal Site Alias",
+  :required => "required",
+  :recipes => [ "drupal::clear_cache_by_alias" ]

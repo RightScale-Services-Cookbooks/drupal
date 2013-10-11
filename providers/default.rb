@@ -9,9 +9,14 @@ action :install do
     checksum "79f2ae06aac349b86fc0f6cd100f3fc34b72e9f46068ddf704d575778aae1f99"
     action :create
   end
-  
-  execute "tar -xvzf /tmp/drupal.tar.gz -C #{install_directory}"
 
+  bash "extract-drupal" do
+    code <<-EOF
+      tar -xvzf /tmp/drupal.tar.gz -C /tmp
+      cd /tmp/drupal*
+      mv . #{install_directory}
+    EOF
+  end
 end
 
 action :create_drush_alias do
@@ -70,6 +75,7 @@ end
 
 action :generate_settings do
   settings_file=@new_resource.settings_file
+  current_resource=@new_resource
   directory "#{::File.dirname(settings_file)}/local_settings/" do
     owner "root"
     group "root"
@@ -83,7 +89,7 @@ action :generate_settings do
     owner "root"
     group "root"
     mode "0644"
-    variables(  :database_driver => @new_resource.database_driver,
+    variables(  :database_driver => current_resource.database_driver,
                 :database_schema => @new_resource.database_schema,
                 :database_user => @new_resource.database_user,
                 :database_password => @new_resource.database_password,
