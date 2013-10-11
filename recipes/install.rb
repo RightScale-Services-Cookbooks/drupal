@@ -34,4 +34,6 @@ drupal "localhost" do
   action :create_drush_alias
 end
 
+node[:drupal][:site_alias]="localhost"
+
 rightscale_marker :end

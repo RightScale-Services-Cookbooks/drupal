@@ -4,7 +4,7 @@ maintainer_email 'premium@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures drupal'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.10'
+version          '0.1.12'
 
 depends "rightscale"
 depends "repo"
@@ -23,6 +23,7 @@ recipe "drupal::rightscale-setup-proxies", "uses rightscale tag system to setup 
 recipe "drupal::memcache", "configures memcache"
 recipe "drupal::clear_cache_by_alias", "clears cache by alias"
 recipe "drupal::create_local_db", "creates a local db"
+recipe "drupal::module_installer", "Drupal Module Installer"
 
 attribute "drupal/fileconveyor/username",
   :display_name => "FileConveyor Username", 
@@ -100,3 +101,9 @@ attribute "drupal/site_alias",
   :description => "Drupal Site Alias",
   :required => "required",
   :recipes => [ "drupal::clear_cache_by_alias" ]
+
+attribute "drupal/module/list",
+  :display_name => "Drupal Module List",
+  :description => "Drupal Module List",
+  :required => "required",
+  :recipes => [ "drupal::module_installer" ]

@@ -191,6 +191,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "drupal/module/list": {
+      "display_name": "Drupal Module List",
+      "description": "Drupal Module List",
+      "required": "required",
+      "recipes": [
+        "drupal::module_installer"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {
@@ -206,7 +219,8 @@
     "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies",
     "drupal::memcache": "configures memcache",
     "drupal::clear_cache_by_alias": "clears cache by alias",
-    "drupal::create_local_db": "creates a local db"
+    "drupal::create_local_db": "creates a local db",
+    "drupal::module_installer": "Drupal Module Installer"
   },
-  "version": "0.1.10"
+  "version": "0.1.12"
 }
