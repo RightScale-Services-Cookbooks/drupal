@@ -12,9 +12,11 @@ action :install do
 
   bash "extract-drupal" do
     code <<-EOF
-      tar -xvzf /tmp/drupal.tar.gz -C /tmp
+      tar -xzf /tmp/drupal.tar.gz -C /tmp
       cd /tmp/drupal*
-      mv . #{install_directory}
+      mv * #{install_directory}
+      mv .htaccess #{install_directory}
+      mv .gitignore #{install_directory}
     EOF
   end
 end
