@@ -182,9 +182,12 @@
     "drupal/site_alias": {
       "display_name": "Drupal Site Alias",
       "description": "Drupal Site Alias",
-      "required": "required",
+      "required": "optional",
+      "default": "localhost",
       "recipes": [
-        "drupal::clear_cache_by_alias"
+        "drupal::clear_cache_by_alias",
+        "drupal::install",
+        "drupal::module_installer"
       ],
       "choice": [
 

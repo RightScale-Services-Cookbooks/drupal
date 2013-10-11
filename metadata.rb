@@ -99,8 +99,9 @@ attribute "drupal/memcache_servers",
 attribute "drupal/site_alias",
   :display_name => "Drupal Site Alias",
   :description => "Drupal Site Alias",
-  :required => "required",
-  :recipes => [ "drupal::clear_cache_by_alias" ]
+  :required => "optional",
+  :default => "localhost",
+  :recipes => [ "drupal::clear_cache_by_alias", "drupal::install", "drupal::module_installer" ]
 
 attribute "drupal/module/list",
   :display_name => "Drupal Module List",

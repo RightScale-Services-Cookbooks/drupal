@@ -29,11 +29,9 @@ drupal "default" do
   action :install
 end
 
-drupal "localhost" do
+drupal node[:drupal][:site_alias] do
   path node[:drupal][:base_dir]
   action :create_drush_alias
 end
-
-node[:drupal][:site_alias]="localhost"
 
 rightscale_marker :end
