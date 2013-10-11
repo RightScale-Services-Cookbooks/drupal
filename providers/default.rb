@@ -19,6 +19,13 @@ action :install do
       mv .gitignore #{install_directory}
     EOF
   end
+
+  directory "#{install_directory}/sites/default/files" do
+    owner "apache"
+    group "apache"
+    mode "0777"
+    action :create
+  end
 end
 
 action :create_drush_alias do

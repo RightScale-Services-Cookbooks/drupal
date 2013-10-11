@@ -1,5 +1,28 @@
 rightscale_marker :begin
 
+package "#{node[:drupal][:php][:base_package]}" do
+  action :install
+end
+
+package "#{node[:drupal][:php][:base_package]}-#{node[:drupal][:database][:driver]}" do
+  action :install
+end
+
+package "#{node[:drupal][:php][:base_package]}-pecl-apc" do
+  action :install
+end
+
+package "#{node[:drupal][:php][:base_package]}-gd" do
+  action :install
+end
+
+package "#{node[:drupal][:php][:base_package]}-xml" do
+  action :install
+end
+
+package "#{node[:drupal][:php][:base_package]}-mbstring" do
+  action :install
+end
 
 drupal "default" do
   directory node[:drupal][:base_dir]
