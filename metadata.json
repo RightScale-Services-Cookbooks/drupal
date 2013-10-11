@@ -61,7 +61,8 @@
       ],
       "default": "mysql",
       "recipes": [
-        "drupal::do_config_settings-php"
+        "drupal::do_config_settings-php",
+        "drupal::create_local_db"
       ],
       "calculated": false,
       "type": "string"
@@ -71,7 +72,8 @@
       "description": "Drupal Database Schema",
       "required": "required",
       "recipes": [
-        "drupal::do_config_settings-php"
+        "drupal::do_config_settings-php",
+        "drupal::create_local_db"
       ],
       "choice": [
 
@@ -84,7 +86,8 @@
       "description": "Drupal Database User",
       "required": "required",
       "recipes": [
-        "drupal::do_config_settings-php"
+        "drupal::do_config_settings-php",
+        "drupal::create_local_db"
       ],
       "choice": [
 
@@ -97,7 +100,8 @@
       "description": "Drupal Database Password",
       "required": "required",
       "recipes": [
-        "drupal::do_config_settings-php"
+        "drupal::do_config_settings-php",
+        "drupal::create_local_db"
       ],
       "choice": [
 
@@ -110,7 +114,8 @@
       "description": "Drupal Database Host",
       "required": "required",
       "recipes": [
-        "drupal::do_config_settings-php"
+        "drupal::do_config_settings-php",
+        "drupal::create_local_db"
       ],
       "choice": [
 
@@ -128,7 +133,8 @@
         "5432"
       ],
       "recipes": [
-        "drupal::do_config_settings-php"
+        "drupal::do_config_settings-php",
+        "drupal::create_local_db"
       ],
       "calculated": false,
       "type": "string"
@@ -136,7 +142,8 @@
     "drupal/database/table_prefix": {
       "display_name": "Drupal Database Table Prefix",
       "description": "Drupal Database Table Prefix",
-      "required": "required",
+      "required": "optional",
+      "default": "",
       "recipes": [
         "drupal::do_config_settings-php"
       ],
@@ -171,6 +178,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "drupal/site_alias": {
+      "display_name": "Drupal Site Alias",
+      "description": "Drupal Site Alias",
+      "required": "required",
+      "recipes": [
+        "drupal::clear_cache_by_alias"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {
@@ -184,7 +204,9 @@
     "drupal::do_config_settings-php": "config settings php",
     "drupal::setup-proxies": "configures proxies",
     "drupal::rightscale-setup-proxies": "uses rightscale tag system to setup proxies",
-    "drupal::memcache": "configures memcache"
+    "drupal::memcache": "configures memcache",
+    "drupal::clear_cache_by_alias": "clears cache by alias",
+    "drupal::create_local_db": "creates a local db"
   },
   "version": "0.1.10"
 }

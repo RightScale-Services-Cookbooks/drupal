@@ -22,6 +22,7 @@ recipe "drupal::setup-proxies", "configures proxies"
 recipe "drupal::rightscale-setup-proxies", "uses rightscale tag system to setup proxies"
 recipe "drupal::memcache", "configures memcache"
 recipe "drupal::clear_cache_by_alias", "clears cache by alias"
+recipe "drupal::create_local_db", "creates a local db"
 
 attribute "drupal/fileconveyor/username",
   :display_name => "FileConveyor Username", 
@@ -41,31 +42,31 @@ attribute "drupal/database/driver",
   :required => "optional",
   :choice => [ "mysql", "pgsql" ],
   :default => "mysql",
-  :recipes => [ "drupal::do_config_settings-php" ]
+  :recipes => [ "drupal::do_config_settings-php", "drupal::create_local_db" ]
   
 attribute "drupal/database/schema",
   :display_name => "Drupal Database Schema",
   :description => "Drupal Database Schema",
   :required => "required",
-  :recipes => [ "drupal::do_config_settings-php" ]
+  :recipes => [ "drupal::do_config_settings-php", "drupal::create_local_db" ]
   
 attribute "drupal/database/user",
   :display_name => "Drupal Database User", 
   :description => "Drupal Database User",
   :required => "required",
-  :recipes => [ "drupal::do_config_settings-php" ]
+  :recipes => [ "drupal::do_config_settings-php", "drupal::create_local_db" ]
   
 attribute "drupal/database/password",
   :display_name => "Drupal Database Password",
   :description => "Drupal Database Password",
   :required => "required",
-  :recipes => [ "drupal::do_config_settings-php" ]
+  :recipes => [ "drupal::do_config_settings-php", "drupal::create_local_db" ]
   
 attribute "drupal/database/host",
   :display_name => "Drupal Database Host",
   :description => "Drupal Database Host",
   :required => "required",
-  :recipes => [ "drupal::do_config_settings-php" ]
+  :recipes => [ "drupal::do_config_settings-php", "drupal::create_local_db" ]
   
 attribute "drupal/database/port",
   :display_name => "Drupal Database Port",
@@ -73,12 +74,13 @@ attribute "drupal/database/port",
   :required => "optional",
   :default => "3306",
   :choice => [ "3306", "5432" ],
-  :recipes => [ "drupal::do_config_settings-php" ]
+  :recipes => [ "drupal::do_config_settings-php", "drupal::create_local_db" ]
   
 attribute "drupal/database/table_prefix",
   :display_name => "Drupal Database Table Prefix",
   :description => "Drupal Database Table Prefix",
-  :required => "required",
+  :required => "optional",
+  :default => "",
   :recipes => [ "drupal::do_config_settings-php" ]
 
 attribute "drupal/proxy/pool_name",
