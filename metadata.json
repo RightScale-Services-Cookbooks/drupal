@@ -207,6 +207,34 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "drupal/admin/user": {
+      "display_name": "Drupal Admin User",
+      "description": "Drupal Admin User",
+      "required": "optional",
+      "default": "admin",
+      "recipes": [
+        "drupal::install"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
+    },
+    "drupal/admin/password": {
+      "display_name": "Drupal Admin Password",
+      "description": "Drupal Admin Password",
+      "required": "optional",
+      "default": "admin",
+      "recipes": [
+        "drupal::install"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {

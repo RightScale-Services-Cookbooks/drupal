@@ -108,3 +108,17 @@ attribute "drupal/module/list",
   :description => "Drupal Module List",
   :required => "required",
   :recipes => [ "drupal::module_installer" ]
+
+attribute "drupal/admin/user", 
+  :display_name => "Drupal Admin User",
+  :description => "Drupal Admin User",
+  :required => "optional",
+  :default => "admin",
+  :recipes => [ "drupal::install" ]
+
+attribute "drupal/admin/password",
+  :display_name => "Drupal Admin Password",
+  :description => "Drupal Admin Password",
+  :required => "optional",
+  :default => "admin",
+  :recipes => [ "drupal::install" ]
