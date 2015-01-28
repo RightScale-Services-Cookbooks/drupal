@@ -20,9 +20,11 @@ case node[:platform]
   when "centos","redhat"
     service "httpd" do
 	  action :restart
+	end
   when "ubuntu","debian"
     service "apache2" do
       action :restart
+    end
   end
   
 drupal "clear" do
