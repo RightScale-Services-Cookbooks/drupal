@@ -16,6 +16,15 @@ service "httpd" do
   action :restart
 end
 
+case node[:platform]
+  when "centos","redhat"
+    service "httpd" do
+	  action :restart
+  when "ubuntu","debian"
+    service "apache2" do
+      action :restart
+  end
+  
 drupal "clear" do
   directory node[:drupal][:base_dir]
   action :clear_cache
