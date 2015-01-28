@@ -12,10 +12,6 @@ drupal "configure settings" do
   action :generate_settings
 end
 
-service "httpd" do
-  action :restart
-end
-
 case node[:platform]
   when "centos","redhat"
     service "httpd" do
