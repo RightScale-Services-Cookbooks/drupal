@@ -79,7 +79,14 @@ action :clear_cache do
   if !directory.nil?
     dir_string="cd #{directory};"
   end
-  execute "#{dir_string} drush #{site_alias} cc all"
+
+  bash "run drush clear" do
+    flags "-ex"
+    cwd directory unless directory.nil?
+    code <<-EOH
+      drush #{site_alias} cc all
+    EOH
+  end
 end
 
 action :generate_settings do
