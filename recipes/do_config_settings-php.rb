@@ -25,6 +25,7 @@ case node[:platform]
   
 drupal "clear" do
   directory node[:drupal][:base_dir]
+  site_alias 'self'
   action :clear_cache
 end
 
