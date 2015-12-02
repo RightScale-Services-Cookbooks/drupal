@@ -20,8 +20,12 @@ rightscale_marker :begin
 
 bash "install-drush" do
   code <<-EOF
-pear channel-discover pear.drush.org
-pear install drush/drush
+wget http://files.drush.org/drush.phar
+php drush.phar core-status
+chmod +x drush.phar
+sudo mv drush.phar /usr/local/bin/drush
+drush init
+
 EOF
 end
 
