@@ -18,11 +18,16 @@
 #
 rightscale_marker :begin
 
-bash "install-drush" do
-  code <<-EOF
-pear channel-discover pear.drush.org
-pear install drush/drush
-EOF
+remote_file '/usr/bin/drush' do
+  source 'http://files.drush.org/drush.phar'
+  owner 'root'
+  group 'root'
+  mode 0777
+  action :create
+end
+
+execute '/usr/bin/drush init' do
+  action :run
 end
 
 rightscale_marker :end
