@@ -18,15 +18,16 @@
 #
 rightscale_marker :begin
 
-bash "install-drush" do
-  code <<-EOF
-wget http://files.drush.org/drush.phar
-php drush.phar core-status
-chmod +x drush.phar
-sudo mv drush.phar /usr/local/bin/drush
-drush init
+remote_file '/usr/bin/drush' do
+  source 'http://files.drush.org/drush.phar'
+  owner 'root'
+  group 'root'
+  mode 0777
+  action :create
+end
 
-EOF
+execute '/usr/bin/drush init' do
+  action :run
 end
 
 rightscale_marker :end
