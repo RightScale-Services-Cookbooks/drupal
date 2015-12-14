@@ -42,6 +42,7 @@ bash 'install_composer' do
   mv composer.phar /usr/local/bin/composer
   cd /usr/local/bin/
   export PATH="$HOME/.composer/vendor/bin:$PATH"
+  composer global update
   composer global require drush/drush:7.1.0
   drush status
   EOH
