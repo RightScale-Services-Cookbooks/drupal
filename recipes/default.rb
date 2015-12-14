@@ -18,16 +18,18 @@
 #
 rightscale_marker :begin
 
-remote_file '/usr/bin/drush' do
-  source 'http://files.drush.org/drush.phar'
+# Installing composer
+remote_file '/usr/bin/composer' do
+  source 'https://getcomposer.org/installer'
   owner 'root'
   group 'root'
   mode 0777
   action :create
 end
 
-execute '/usr/bin/drush init' do
-  action :run
+#Installing Drush
+execute 'composer global require drush/drush:7.1.0'
+ action :run
 end
 
 rightscale_marker :end
