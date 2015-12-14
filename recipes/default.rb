@@ -33,25 +33,13 @@ rightscale_marker :begin
 #end
 
 # Installing composer
-bash 'install_composer_and_drupal7' do
+bash 'install_composer' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
   curl -sS https://getcomposer.org/installer | php
   mv composer.phar /usr/local/bin/composer
-  EOH
-end
-
-bash 'composer_path_update' do
-  user 'root'
-  code <<-EOH
   export PATH="$HOME/.composer/vendor/bin:$PATH"
-  EOH
-end
-
-bash 'composer_drush_install' do
-  user 'root'
-  code <<--EOH
   composer global require drush/drush:7.1.0
   drush status
   EOH
