@@ -39,6 +39,7 @@ bash 'install_something' do
   code <<-EOH
   wget https://getcomposer.org/installer | php
   mv composer.phar /usr/local/bin/composer
+  export PATH="$HOME/.composer/vendor/bin:$PATH"
   composer global require drush/drush:7.1.0
   drush status
   EOH
