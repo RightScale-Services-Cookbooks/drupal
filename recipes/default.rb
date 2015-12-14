@@ -33,7 +33,7 @@ rightscale_marker :begin
 #end
 
 # Installing composer
-bash "install_composer_and_drupal7" do
+bash 'install_composer_and_drupal7' do
   user 'root'
   cwd '/tmp'
   code <<-EOH
