@@ -35,7 +35,9 @@ end
 # Installing composer
 bash 'install_something' do
   user 'root'
+  cwd '/tmp'
   code <<-EOH
+  mv composer.phar /usr/local/bin/composer
   composer global require drush/drush:7.1.0
   drush status
   EOH
