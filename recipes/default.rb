@@ -35,12 +35,11 @@ rightscale_marker :begin
 # Installing composer
 bash 'install_composer' do
   user 'root'
-  cwd '/tmp'
+  cwd '/usr/local/bin/'
   flags '-ex'
   code <<-EOH
   curl -sS https://getcomposer.org/installer | php
   mv composer.phar /usr/local/bin/composer
-  cd /usr/local/bin/
   export PATH="$HOME/.composer/vendor/bin:$PATH"
   /usr/local/bin/composer global update
   /usr/local/bin/composer global require drush/drush:7.1.0
