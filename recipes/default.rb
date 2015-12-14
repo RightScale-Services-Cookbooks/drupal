@@ -36,6 +36,7 @@ rightscale_marker :begin
 bash 'install_composer' do
   user 'root'
   cwd '/tmp'
+  flags '-ex'
   code <<-EOH
   curl -sS https://getcomposer.org/installer | php
   mv composer.phar /usr/local/bin/composer
