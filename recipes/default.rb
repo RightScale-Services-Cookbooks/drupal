@@ -18,7 +18,7 @@
 #
 rightscale_marker :begin
 
-# Installing composer
+# Download composer
 remote_file '/usr/bin/composer' do
   source 'https://getcomposer.org/installer'
   owner 'root'
@@ -27,9 +27,18 @@ remote_file '/usr/bin/composer' do
   action :create
 end
 
-#Installing Drush
-execute 'composer global require drush/drush:7.1.0'
- action :run
+##Installing Drush
+#execute 'composer global require drush/drush:7.1.0'
+# action :run
+#end
+
+# Installing composer
+bash 'install_something' do
+  user 'root'
+  code <<-EOH
+  composer global require drush/drush:7.1.0
+  drush status
+  EOH
 end
 
 rightscale_marker :end
