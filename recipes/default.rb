@@ -36,15 +36,14 @@ rightscale_marker :begin
   #mv composer.phar /usr/local/bin/composer
   #export PATH="$HOME/.composer/vendor/bin:$PATH"
   
-  include_recipe "composer::default"
-  include_recipe "composer::global_configs"
 # Installing composer
-bash 'install_drush' do
+bash 'install_composeranddrush' do
   user 'root'
   flags '-ex'
   code <<-EOH
+  curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
   /usr/local/bin/composer global require drush/drush:7.1.0
-  drush status
+  /root/.composer/vendor/bin/drush status
   EOH
 end
 
