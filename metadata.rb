@@ -11,7 +11,6 @@ depends "repo"
 depends "web_apache"
 depends "app"
 depends "app_php"
-depends "composer"
 
 recipe "drupal::default", "sets up drupal"
 recipe "drupal::install", "installs base drupal"
