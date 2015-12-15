@@ -19,31 +19,32 @@
 rightscale_marker :begin
 
 # Download composer
-#remote_file '/usr/bin/composer' do
-#  source 'https://getcomposer.org/installer'
-#  owner 'root'
-#  group 'root'
-#  mode 0777
-#  action :create
-#end
+remote_file '/usr/bin/composer' do
+  source 'https://getcomposer.org/installer'
+  owner 'root'
+  group 'root'
+  mode 0644
+  action :create
+end
 
 ##Installing Drush
 #execute 'composer global require drush/drush:7.1.0'
 # action :run
 #end
 
+ #curl -sS https://getcomposer.org/installer | php
+  #mv composer.phar /usr/local/bin/composer
+  #export PATH="$HOME/.composer/vendor/bin:$PATH"
+  
 # Installing composer
 bash 'install_composer' do
   user 'root'
   cwd '/usr/local/bin/'
   flags '-ex'
   code <<-EOH
-  curl -sS https://getcomposer.org/installer | php
-  mv composer.phar /usr/local/bin/composer
-  export PATH="$HOME/.composer/vendor/bin:$PATH"
   /usr/local/bin/composer global update
   /usr/local/bin/composer global require drush/drush:7.1.0
-  drush status
+  #drush status
   EOH
 end
 
