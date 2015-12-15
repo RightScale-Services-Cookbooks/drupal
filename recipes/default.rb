@@ -30,8 +30,8 @@ bash 'install_composeranddrush' do
 end
 
 #create a symbolic link to drush command
-link '/root/.composer/vendor/bin/drush' do
-  to '/usr/local/bin/drush'
+link '/usr/local/bin/drush' do
+  to '/root/.composer/vendor/bin/drush'
 end
 
 rightscale_marker :end
