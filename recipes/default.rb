@@ -17,24 +17,6 @@
 # limitations under the License.
 #
 rightscale_marker :begin
-
-# Download composer
-#remote_file '/usr/local/bin/composer' do
-#  source 'https://getcomposer.org/installer|php'
-#  owner 'root'
-#  group 'root'
-#  mode 0755
-#  action :create
-#end
-
-##Installing Drush
-#execute 'composer global require drush/drush:7.1.0'
-# action :run
-#end
-
- #curl -sS https://getcomposer.org/installer | php
-  #mv composer.phar /usr/local/bin/composer
-  #export PATH="$HOME/.composer/vendor/bin:$PATH"
   
 # Installing composer
 bash 'install_composeranddrush' do
@@ -45,6 +27,11 @@ bash 'install_composeranddrush' do
   /usr/local/bin/composer global require drush/drush:7.1.0
   /root/.composer/vendor/bin/drush status
   EOH
+end
+
+#create a symbolic link to drush command
+link '/root/.composer/vendor/bin/drush' do
+  to '/usr/local/bin/drush'
 end
 
 rightscale_marker :end
