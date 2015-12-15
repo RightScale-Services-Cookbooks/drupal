@@ -20,7 +20,7 @@ rightscale_marker :begin
 
 # Download composer
 remote_file '/usr/local/bin/composer' do
-  source 'https://getcomposer.org/installer'
+  source 'https://getcomposer.org/installer|php'
   owner 'root'
   group 'root'
   mode 0755
