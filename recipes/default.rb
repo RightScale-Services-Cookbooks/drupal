@@ -19,11 +19,11 @@
 rightscale_marker :begin
 
 # Download composer
-remote_file '/usr/bin/composer' do
+remote_file '/usr/local/bin/composer' do
   source 'https://getcomposer.org/installer'
   owner 'root'
   group 'root'
-  mode 0644
+  mode 0755
   action :create
 end
 
