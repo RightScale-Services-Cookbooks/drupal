@@ -23,14 +23,14 @@ bash 'install_composeranddrush' do
   user 'root'
   flags '-ex'
   code <<-EOH
-  curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-  /usr/local/bin/composer global require drush/drush:7.1.0
+  curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin --filename=composer
+  /usr/bin/composer global require drush/drush:7.1.0
   /root/.composer/vendor/bin/drush status
   EOH
 end
 
 #create a symbolic link to drush command
-link '/usr/local/bin/drush' do
+link '/usr/bin/drush' do
   to '/root/.composer/vendor/bin/drush'
 end
 
