@@ -23,7 +23,7 @@ bash 'install_composeranddrush' do
   user 'root'
   flags '-ex'
   code <<-EOH
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+  curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On -- --install-dir=/usr/bin --filename=composer
   /usr/bin/composer global require drush/drush:7.1.0
   /root/.composer/vendor/bin/drush status
   EOH
