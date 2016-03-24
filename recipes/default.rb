@@ -23,10 +23,10 @@ bash 'install_composeranddrush' do
   user 'root'
   flags '-ex'
   code <<-EOH
-  sed -i 's/*allow_url_fopen.*/allow_url_fopen = On/' /etc/php.ini
+  sed -i 's/^allow_url_fopen.*/allow_url_fopen = On/' /etc/php.ini
   curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On -- --install-dir=/usr/bin --filename=composer
   /usr/bin/composer global require drush/drush:7.1.0
-  sed -i 's/*allow_url_fopen.*/allow_url_fopen = Off/' /etc/php.ini
+  sed -i 's/^allow_url_fopen.*/allow_url_fopen = Off/' /etc/php.ini
   /root/.composer/vendor/bin/drush status
   EOH
 end
